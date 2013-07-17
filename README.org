@@ -3,16 +3,24 @@
 Support for MongoDB queries in org-mode blocks, like so:
 
 #+BEGIN_EXAMPLE
-#+BEGIN_SRC mongo
-use staff;
+#+BEGIN_SRC mongo :db staff
 db.employees.count({country: "gb"});
 #+END_SRC
 
 #+RESULTS:
-: switched to db staff
 : 15
 #+END_EXAMPLE
 
 ** Status
 
-Marginally better than it not existing at all. Watch this space...
+Alpha. Safe to use, but feature-poor. It's still better than it not existing at all. ;-)
+
+** Options
+
+Each block supports the following arguments:
+
+| Argument | Description   | Example                     | Default |
+|----------+---------------+-----------------------------+---------|
+| =:db=      | Database name | =#+BEGIN_SRC mongo :db staff= | None.   |
+
+All defaults are customizable with =M-x customize-group RET ob-mongo=.

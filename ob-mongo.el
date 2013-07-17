@@ -16,10 +16,22 @@
 ;;; Code:
 (require 'ob)
 
+(defgroup ob-mongo nil
+  "org-mode blocks for MongoDB."
+  :group 'org)
+
+(defcustom ob-mongo:default-db nil
+  "Default mongo database."
+  :group 'ob-mongo
+  :type 'string)
+
 ;;;###autoload
 (defun org-babel-execute:mongo (body params)
   "org-babel mongo hook."
-  (org-babel-eval "mongo --quiet" body))
+  (let* ((db (or (cdr (assoc :db params))
+				 ob-mongo:default-db))
+		 (cmd (mapconcat 'identity (list "mongo" "--quiet" db) " ")))
+	(org-babel-eval cmd body)))
 
 ;;;###autoload
 (add-to-list 'org-src-lang-modes '("mongo" . js))
