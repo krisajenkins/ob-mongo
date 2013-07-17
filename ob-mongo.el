@@ -7,7 +7,7 @@
 ;; URL: https://github.com/krisajenkins/ob-mongo
 ;; Created: 17th July 2013
 ;; Version: 0.1.0
-;; Package-Requires: ( (org "8"))
+;; Package-Requires: ((org "8"))
 
 ;;; Commentary:
 ;;
