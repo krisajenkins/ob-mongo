@@ -1,0 +1,18 @@
+* Org Babel Mongo
+
+Support for MongoDB queries in org-mode blocks, like so:
+
+#+BEGIN_EXAMPLE
+#+BEGIN_SRC mongo
+use staff;
+db.employees.count({country: "gb"});
+#+END_SRC
+
+#+RESULTS:
+: switched to db staff
+: 15
+#+END_EXAMPLE
+
+** Status
+
+Marginally better than it not existing at all. Watch this space...
