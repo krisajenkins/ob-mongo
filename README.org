@@ -19,8 +19,8 @@ Alpha. Safe to use, but feature-poor. It's still better than it not existing at 
 
 Each block supports the following arguments:
 
-| Argument | Description   | Example                     | Default |
-|----------+---------------+-----------------------------+---------|
-| =:db=      | Database name | =#+BEGIN_SRC mongo :db staff= | None.   |
+| Argument | Description    | Example                     | Default |
+|----------+----------------+-----------------------------+---------|
+| =:db=      | Database name. | =#+BEGIN_SRC mongo :db staff= | None.   |
 
 All defaults are customizable with =M-x customize-group RET ob-mongo=.
