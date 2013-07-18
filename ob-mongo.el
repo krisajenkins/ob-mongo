@@ -14,6 +14,7 @@
 ;; Execute mongodb queries within org-mode blocks.
 
 ;;; Code:
+(require 'org)
 (require 'ob)
 
 (defgroup ob-mongo nil
@@ -34,7 +35,8 @@
 	(org-babel-eval cmd body)))
 
 ;;;###autoload
-(add-to-list 'org-src-lang-modes '("mongo" . js))
+(eval-after-load "org"
+  '(add-to-list 'org-src-lang-modes '("mongo" . js)))
 
 (provide 'ob-mongo)
 
