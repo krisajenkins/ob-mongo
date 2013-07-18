@@ -11,6 +11,17 @@ db.employees.count({country: "gb"});
 : 15
 #+END_EXAMPLE
 
+** Installation
+
+If you're hooked up to [[http://melpa.milkbox.net/][MELPA]]:
+
+#+BEGIN_EXAMPLE
+M-x package-refresh-contents
+M-x package-install RET ob-mongo
+#+END_EXAMPLE
+
+Alternatively just grab the single =ob-mongo.el= file and install that in your preferred way.
+
 ** Status
 
 Alpha. Safe to use, but feature-poor. It's still better than it not existing at all. ;-)
