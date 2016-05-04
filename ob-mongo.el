@@ -26,13 +26,48 @@
   :group 'ob-mongo
   :type 'string)
 
+(defcustom ob-mongo:default-port nil
+  "Default mongo port."
+  :group 'ob-mongo
+  :type 'integer)
+
+(defcustom ob-mongo:default-user nil
+  "Default mongo user."
+  :group 'ob-mongo
+  :type 'string)
+
+(defcustom ob-mongo:default-password nil
+  "Default mongo password."
+  :group 'ob-mongo
+  :type 'string)
+
+(defcustom ob-mongo:default-mongo-executable "mongo"
+  "Default mongo executable."
+  :group 'ob-mongo
+  :type 'string)
+
+(defun ob-mongo--make-command (params)
+  (let ((pdefs `((:mongoexec ,ob-mongo:default-mongo-executable)
+                 (quiet "--quiet")
+                 (:port ,ob-mongo:default-port "--port")
+                 (:password ,ob-mongo:default-password "--password")
+                 (:user ,ob-mongo:default-user "--username")
+                 (:db ,ob-mongo:default-db))))
+    (mapconcat (lambda (pdef)
+                 (let ((opt (or (nth 2 pdef) ""))
+                       (val (or (cdr (assoc (car pdef) params))
+                                (nth 1 pdef))))
+                   (cond ((not opt) (format "%s" val))
+                         (val (format "%s %s" opt val))
+                         (t ""))))
+               pdefs " ")))
+
 ;;;###autoload
 (defun org-babel-execute:mongo (body params)
   "org-babel mongo hook."
-  (let* ((db (or (cdr (assoc :db params))
-				 ob-mongo:default-db))
-		 (cmd (mapconcat 'identity (list "mongo" "--quiet" db) " ")))
-	(org-babel-eval cmd body)))
+  (unless (assoc :db params)
+    (user-error "The required parameter :db is missing."))
+  (org-babel-eval (ob-mongo--make-command params) body))
 
 ;;;###autoload
 (eval-after-load "org"
