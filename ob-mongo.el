@@ -26,6 +26,11 @@
   :group 'ob-mongo
   :type 'string)
 
+(defcustom ob-mongo:default-host nil
+  "Default mongo host."
+  :group 'ob-mongo
+  :type 'string)
+
 (defcustom ob-mongo:default-port nil
   "Default mongo port."
   :group 'ob-mongo
@@ -49,6 +54,7 @@
 (defun ob-mongo--make-command (params)
   (let ((pdefs `((:mongoexec ,ob-mongo:default-mongo-executable)
                  (quiet "--quiet")
+                 (:host , ob-mongo:default-host "--host")
                  (:port ,ob-mongo:default-port "--port")
                  (:password ,ob-mongo:default-password "--password")
                  (:user ,ob-mongo:default-user "--username")
