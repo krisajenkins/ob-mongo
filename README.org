@@ -33,7 +33,7 @@ Each block supports the following arguments:
 | Argument   | Description      | Example                               | Default |
 |------------+------------------+---------------------------------------+---------|
 | =:db=        | Database name.   | =#+BEGIN_SRC mongo :db staff=           | None.   |
-| :host      | Host             | #+BEGIN_SRC mongo :host localhost     | None.   |
+| =:host=      | Host             | =#+BEGIN_SRC mongo :host localhost=     | None.   |
 | =:port=      | Port             | =#+BEGIN_SRC mongo :port 27018=         | None.   |
 | =:user=      | Username         | =#+BEGIN_SRC mongo :user root=          | None.   |
 | =:password=  | Password         | =#+BEGIN_SRC mongo :password superword= | None.   |
