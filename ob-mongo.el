@@ -15,7 +15,6 @@
 ;; Execute mongodb queries within org-mode blocks.
 
 ;;; Code:
-(require 'org)
 (require 'ob)
 
 (defgroup ob-mongo nil
