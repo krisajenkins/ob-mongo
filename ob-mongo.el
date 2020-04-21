@@ -5,6 +5,7 @@
 ;; Author: Kris Jenkins <krisajenkins@gmail.com>
 ;; Maintainer: Kris Jenkins <krisajenkins@gmail.com>
 ;; Keywords: org babel mongo mongodb
+;; Package-Version: 20170720.1919
 ;; URL: https://github.com/krisajenkins/ob-mongo
 ;; Created: 17th July 2013
 ;; Version: 0.1.0
@@ -47,6 +48,11 @@
   :group 'ob-mongo
   :type 'string)
 
+(defcustom ob-mongo:default-authentication "admin"
+  "Default authentication database."
+  :group 'ob-mongo
+  :type 'string)
+
 (defcustom ob-mongo:default-mongo-executable "mongo"
   "Default mongo executable."
   :group 'ob-mongo
@@ -59,6 +65,7 @@
                  (:port ,ob-mongo:default-port "--port")
                  (:password ,ob-mongo:default-password "--password")
                  (:user ,ob-mongo:default-user "--username")
+                 (:authentication ,ob-mongo:default-authentication "--authenticationDatabase")
                  (:db ,ob-mongo:default-db))))
     (mapconcat (lambda (pdef)
                  (let ((opt (or (nth 2 pdef) ""))
